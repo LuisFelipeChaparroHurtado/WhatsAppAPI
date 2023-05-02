@@ -10,12 +10,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 class WhatsappDAO {
-    static getVerify(res) {
+    static getVerify(res, req) {
         return __awaiter(this, void 0, void 0, function* () {
             res.send("Hola verifyToken");
         });
     }
-    static postReceive(res) {
+    static postReceive(res, req) {
         return __awaiter(this, void 0, void 0, function* () {
             res.send("Hola receiveToken");
         });
