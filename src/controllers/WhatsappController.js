@@ -4,6 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const WhatsappDAO_1 = __importDefault(require("../dao/WhatsappDAO"));
+const fs = require("fs");
+const myConsole = new console.Console(fs.createWriteStream("./logs.txt"));
 class WhatsappController extends WhatsappDAO_1.default {
     constructor() {
         super(...arguments);
@@ -22,9 +24,21 @@ class WhatsappController extends WhatsappDAO_1.default {
             catch (e) {
                 res.status(400).send();
             }
-            res.status(200).send("Hola verifyToken");
         };
         this.getReceiveToken = (req, res) => {
+            try {
+                var entry = req.body["entry"][0];
+                var changes = entry["changes"][0];
+                var value = changes["value"];
+                var messageObject = value["messages"];
+                myConsole.log(messageObject);
+                console.log(messageObject);
+                res.send("EVENT_RECEIVED");
+            }
+            catch (e) {
+                myConsole.log(e);
+                res.send("EVENT_RECEIVED");
+            }
             WhatsappController.postReceive(res);
         };
     }
