@@ -39,7 +39,6 @@ class WhatsappController extends WhatsappDAO_1.default {
                 myConsole.log(e);
                 res.send("EVENT_RECEIVED");
             }
-            WhatsappController.postReceive(res, req);
         };
     }
 }
