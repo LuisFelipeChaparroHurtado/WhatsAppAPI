@@ -22,6 +22,7 @@ class WhatsappController extends WhatsappDAO_1.default {
             catch (e) {
                 res.status(400).send();
             }
+            res.status(200).send("Hola verifyToken");
         };
         this.getReceiveToken = (req, res) => {
             WhatsappController.postReceive(res);
