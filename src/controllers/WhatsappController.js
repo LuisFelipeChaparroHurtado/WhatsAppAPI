@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const WhatsappDAO_1 = __importDefault(require("../dao/WhatsappDAO"));
+const whatsappService = require("../services/whatsappService");
 const fs = require("fs");
 const myConsole = new console.Console(fs.createWriteStream("./logs.txt"));
 function GetTextUser(messages) {
@@ -57,9 +58,11 @@ class WhatsappController extends WhatsappDAO_1.default {
                 var messageObject = value["messages"];
                 if (typeof messageObject != "undefined") {
                     var messages = messageObject[0];
+                    var number = messages["from"];
                     var text = GetTextUser(messages);
                     myConsole.log(text);
                     console.log(text);
+                    whatsappService.SendMessageWhatsApp("El usuario dijo" + text, number);
                 }
                 res.send("EVENT_RECEIVED");
             }
