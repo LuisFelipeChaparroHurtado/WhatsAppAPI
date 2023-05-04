@@ -55,10 +55,12 @@ class WhatsappController extends WhatsappDAO_1.default {
                 var changes = entry["changes"][0];
                 var value = changes["value"];
                 var messageObject = value["messages"];
-                var messages = messageObject[0];
-                var text = GetTextUser(messages);
-                myConsole.log(text);
-                console.log(text);
+                if (typeof messageObject != "undefined") {
+                    var messages = messageObject[0];
+                    var text = GetTextUser(messages);
+                    myConsole.log(text);
+                    console.log(text);
+                }
                 res.send("EVENT_RECEIVED");
             }
             catch (e) {
