@@ -36,7 +36,7 @@ class WhatsappController extends WhatsappDAO_1.default {
         super(...arguments);
         this.getVerifyToken = (req, res) => {
             try {
-                var accessToken = "RYTAFAADHJJADADH25634232GGSDSA";
+                var accessToken = "RYTAFAADHJJADADH25634232GGSDSA123";
                 var token = req.query["hub.verify_token"];
                 var challenge = req.query["hub.challenge"];
                 if (challenge != null && token != null && token == accessToken) {
