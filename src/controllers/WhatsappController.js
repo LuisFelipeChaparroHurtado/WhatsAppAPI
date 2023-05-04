@@ -15,8 +15,6 @@ function GetTextUser(messages) {
     else if (typeMessage == "interactive") {
         var interactiveObject = messages["interactive"];
         var typeInteractive = interactiveObject["type"];
-        myConsole.log(interactiveObject);
-        console.log(interactiveObject);
         if (typeInteractive == "button_reply") {
             text = interactiveObject["button_reply"]["title"];
         }
@@ -59,6 +57,8 @@ class WhatsappController extends WhatsappDAO_1.default {
                 var messageObject = value["messages"];
                 var messages = messageObject[0];
                 var text = GetTextUser(messages);
+                myConsole.log(text);
+                console.log(text);
                 res.send("EVENT_RECEIVED");
             }
             catch (e) {
